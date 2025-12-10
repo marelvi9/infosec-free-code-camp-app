@@ -2,17 +2,13 @@ const express = require('express');
 const helmet = require("helmet");
 const app = express();
 
-
-app.use(helmet());
-
+app.use(helmet.hidePoweredBy());   // <-- ESTA LÍNEA ES IMPORTANTE
 
 app.use(express.static('public'));
-
 
 app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
-
 
 const PORT = process.env.PORT || 3030;
 
